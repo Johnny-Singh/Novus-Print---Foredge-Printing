@@ -773,7 +773,7 @@
       Your response is confidential and will be used solely for Novus Print's internal capital investment analysis.<br>
       A summary of findings will be shared with all participating publishers.
     </p>
-    <button type="submit" class="btn-submit">Submit Response →</button>
+    <button type="submit" class="btn-submit" id="submitBtn">Submit Response →</button>
   </div>
 </form>
 </div>
@@ -794,7 +794,10 @@
 </footer>
 
 <script>
-document.getElementById('surveyForm').addEventListener('submit', function(e) {
+document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
   e.preventDefault();
   const data = new FormData(this);
   const results = {};
